@@ -1,0 +1,105 @@
+/*notes13 css*/
+body {
+    padding-top: 50px;
+}
+
+/* n13 */
+.n13{  }
+.topBoard {}
+.middleBoard {}
+.bottomBoard {}
+.bg {
+    background-image: url("../media/n13pinnwand_1300x866px.jpg");
+    padding:15px;
+    min-height:80px;
+    margin-bottom:20px;
+}
+.bg button
+{
+    margin-top:50px;
+}
+.n13postit {
+    display: none;
+    width:110px; margin:-10px 0 0 10%;
+}
+
+/* mobile */
+@media (max-width: 767px) {
+    .poRelative {position:relative;}
+    .tbl-n13 thead {height:190px;}
+    .tbl-n13 th:nth-child(1) {float:left; width: 96%; position: absolute; top:0px; left:auto;}
+    .tbl-n13 th:nth-child(2) {float:left; width: 96%; position: absolute; top:0px; left:auto;}
+    .tbl-n13 th:nth-child(3) {float:left; width: 96%; position: absolute; top:35px; left:auto;}
+    .tbl-n13 th:nth-child(4) {float:left; width: 96%; position: absolute; top:70px; left:auto;}
+    .tbl-n13 th:nth-child(5) {float:left; width: 96%; position: absolute; top:105px; left:auto;}
+    .tbl-n13 th:nth-child(6) {float:left; width: 96%; position: absolute; top:130px; left:auto;}
+
+    .tbl-n13 td {float:left;}
+
+    .n13postit {
+        width:80px; margin:-10px 0 0 5%;
+    }
+}
+
+/* overwrites */
+.navbar-inverse{
+    background-color: #06232b;
+    border-color: #080808;
+}
+
+.navbar-toggle {
+    float:left;
+    margin: 8px 0 8px 15px;
+}
+
+.navbar-brand {
+    float:right;
+}
+.n13 .panel-primary > .panel-heading {
+    background-color: #fff;
+    border-color: #337ab7;
+    color: #000;
+}
+.n13 .panel:hover .panel-heading {
+    background-color: #337ab7;
+    border-color: #337ab7;
+    color: #fff;
+}
+.n13 .btn:hover,
+.n13 .btn:active,
+.n13 .btn:focus
+{
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    color: #fff;
+}
+
+.n13 .panel {margin-bottom: 0px;}
+
+/* table data */
+thead {
+    border-bottom: 2px solid black;
+}
+thead button {
+    width: 100%;
+}
+
+.tbl-n13 {}
+.tbl-n13 th {
+    padding: 5px 5px 8px 5px;
+}
+.tbl-n13 td {
+    padding: 8px 5px 5px 5px;
+}
+
+.sort-true button {
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    color: #fff;
+}
+
+.sort-false button {
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    color: #fff;
+}
