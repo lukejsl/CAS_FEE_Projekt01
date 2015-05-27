@@ -1,5 +1,6 @@
 /**
  * Created by Lukejsl on 27.05.2015.
+ *
  */
 function SortableTableCtrl() {
     var scope = this;
