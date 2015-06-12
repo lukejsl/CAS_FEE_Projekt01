@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>n13 | create and maintain easy your notes</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="css/n13.css" rel="stylesheet">
+    <!-- Für Datepicker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+
+<header>
+    <div class="nav">
+        <div class="container">
+            <a class="n13logo" href="index.html">n13</a>
+            <ul>
+                <li class="active"><a href="index.html">my notes</a></li>
+                <li><a href="#how to">how to</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="board">
+        <img src="media/n13postit_340x320px.png" id="n13postit" class="n13postit"/>
+        <img src="media/n13postit_2_340x320px.png" id="n13postit_2" class="n13postit"/>
+    </div>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <td>Title</td>
+            <td><input id="title" type="text" size="45"></td>
+        </tr>
+        <tr>
+            <td>Beschreibung</td>
+            <td><textarea id="content" type="text" cols="46" rows="5"></textarea></td>
+        </tr>
+        <tr>
+            <td>Wichtigkeit</td>
+            <td><input id="grade" type="text" size="45"></td>
+        </tr>
+        <tr>
+            <td>Erledigt bis</td>
+            <td><input type="text" id="datepicker" size="45"></td>
+        </tr>
+    </table>
+    <input type="button" value="Speichern" id="saveNote"/>
+    <input type="button" value="Clear" id="clearNotes"/>
+    <input type="button" value="Sort by title" id="sortNotesTitle"/>
+    <input type="button" value="Sort by finish date" id="sortNotesFinish"/>
+    <button>Cancel</button>
+
+    <div id="notesItems"></div>
+</div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+    <!-- Für Sortierfunktion -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+    <!-- Für Datepicker -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="js/n13note.js"></script>
+
+    <script id="note-template" type="text/x-handlebars-template">
+        <ul id="note-list">
+            {{#note}}
+            <li>
+                Title: {{title}}<br>
+                Content: {{content}}<br>
+                Grade: {{grade}}<br>
+                Date finished: {{dateFinished}}
+            </li>
+            {{/note}}
+        </ul>
+    </script>
+
+</body>
