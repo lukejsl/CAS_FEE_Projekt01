@@ -5,6 +5,7 @@
     <title>n13 | create and maintain easy your notes</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link href="css/n13.css" rel="stylesheet">
+    <link href="css/n13rating.css" rel="stylesheet">
     <!-- Für Datepicker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 </head>
@@ -29,7 +30,7 @@
     </div>
 </div>
 
-<div>
+<div class="boxFlex">
     <table>
         <tr>
             <td>Title</td>
@@ -41,13 +42,19 @@
         </tr>
         <tr>
             <td>Wichtigkeit</td>
-            <td><input id="grade" type="text" size="45"></td>
-        </tr>
-        <tr>
-            <td>Erledigt bis</td>
-            <td><input type="text" id="datepicker" size="45"></td>
+            <td>
+                <select id="grade">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                &emsp; Erledigt bis
+                <input type="text" id="datepicker" size="20"></td>
         </tr>
     </table>
+    <br>
     <input type="button" value="Speichern" id="saveNote"/>
     <input type="button" value="Clear" id="clearNotes"/>
     <input type="button" value="Sort by title" id="sortNotesTitle"/>
@@ -65,7 +72,7 @@
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="js/n13note.js"></script>
 
-    <script id="note-template" type="text/x-handlebars-template">
+    <!--script id="note-template" type="text/x-handlebars-template">
         <ul id="note-list">
             {{#note}}
             <li>
@@ -76,6 +83,23 @@
             </li>
             {{/note}}
         </ul>
-    </script>
+    </script-->
+
+<script id="note-template" type="x-handlebars-template">
+    <div id="note-list">
+    {{#note}}
+    <div class="list">
+        <div class="finished"><input type="checkbox" name="finished" value="na" id="check1" {{finished}}/></div>
+        <div class="box boxFlex">
+            <div class="title">{{title}}</div>
+            <div class="content">{{content}}</div>
+        </div>
+        <div class="dateCreated">{{dateCreated}}</div>
+        <div class="dateFinished">{{dateFinished}}</div>
+        <div class="grade">{{grade}}</div>
+    </div>
+    {{/note}}
+    </div>
+</script>
 
 </body>

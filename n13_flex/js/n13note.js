@@ -50,13 +50,13 @@ var noteStorage = (function () {
 
     // Note Prototype
     var noteEntry = function (entry) {
-        this.id = entry.id;
+        this.id = entry.id || 0;
         this.title = entry.title;
-        this.finished = entry.finished;
-        this.dateCreated = entry.dateCreated;
-        this.dateFinished = entry.dateFinished;
-        this.grade = entry.grade;
-        this.content = entry.content;
+        this.finished = false;
+        this.dateCreated = new Date();
+        this.dateFinished = new Date(entry.dateFinished);
+        this.grade = entry.grade || 1;
+        this.content = entry.content || 'none';
         return this;
     };
 
@@ -158,6 +158,7 @@ var noteStorage = (function () {
                 entry.dateFinished = $("#datepicker").val();
                 if (save === true) {
                     noteStorage.addNote(entry);
+                    window.location.replace("index.html");
                 }
                 showNotes();
             }
@@ -194,7 +195,23 @@ var noteStorage = (function () {
             }
         );
 
-        $( "#datepicker" ).datepicker();
+        $("#grade1").on("click",
+            function () {
+                var test = 0;
+                test++;
+            });
+
+        function grade1(){
+            var test = 0;
+            test++;
+        }
+
+        $('span').on('click',function(){
+            var test = $(this.id);
+            grade1();
+        });
+
+        $( "#datepicker" ).datepicker({dateFormat: 'dd-mm-yy'});
 
         function showNotes() {
 
@@ -211,6 +228,11 @@ var noteStorage = (function () {
             $('body').append(template(notes), {id: "#newNote"});
         }
         showNotes();
+
+        $( "#n13postit" ).fadeIn( 3000, function() {
+        });
+        $( "#n13postit_2" ).fadeIn( 6000, function() {
+        });
     });
 
 })(jQuery, window, document);
