@@ -87,7 +87,7 @@
 
 <script id="note-template" type="x-handlebars-template">
     <div id="note-list">
-    {{#note}}
+        {{#each this}}
     <div class="list">
         <div class="finished"><input type="checkbox" name="finished" value="na" id="check1" {{finished}}/></div>
         <div class="box boxFlex">
@@ -98,7 +98,7 @@
         <div class="dateFinished">{{dateFinished}}</div>
         <div class="grade">{{grade}}</div>
     </div>
-    {{/note}}
+    {{/each}}
     </div>
 </script>
 

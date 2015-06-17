@@ -52,11 +52,11 @@ var noteStorage = (function () {
     var noteEntry = function (entry) {
         this.id = entry.id || 0;
         this.title = entry.title;
-        this.finished = false;
+        this.finished = null;
         this.dateCreated = new Date();
-        this.dateFinished = new Date(entry.dateFinished);
+        this.dateFinished = entry.dateFinished;
         this.grade = entry.grade || 1;
-        this.content = entry.content || 'none';
+        this.content = entry.content || '';
         return this;
     };
 
@@ -133,7 +133,7 @@ var noteStorage = (function () {
 
 
 ;
-(function ($, window, document, undefined) {
+(function ($, window, document, undefined ) {
 
     "use strict";
 
@@ -195,33 +195,21 @@ var noteStorage = (function () {
             }
         );
 
-        $("#grade1").on("click",
-            function () {
-                var test = 0;
-                test++;
-            });
-
-        function grade1(){
-            var test = 0;
-            test++;
-        }
-
-        $('span').on('click',function(){
-            var test = $(this.id);
-            grade1();
-        });
-
         $( "#datepicker" ).datepicker({dateFormat: 'dd-mm-yy'});
+
+        /*Handlebars.registerHelper("makeDate", function(timestamp) {
+            return (new Date(timestamp)).format("dd-MM-yyyy");
+        });*/
 
         function showNotes() {
 
             var source = $("#note-template").html();
             var template = Handlebars.compile(source);
             var data = noteStorage.notes();
-            var notes = {note:[]};
+            var notes = [];
 
             data.forEach(function(entry){
-                notes.note.push(entry);
+                notes.push(entry);
             });
 
             $('#note-list').remove();
