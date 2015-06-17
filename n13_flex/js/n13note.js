@@ -41,7 +41,7 @@ Informationen zur Projektabgabe
  Sonstiges
      Projektstruktur
      JavaScript Errors
-* */
+ */
 
 var noteStorage = (function () {
     "use strict";

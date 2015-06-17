@@ -25,7 +25,7 @@ $(function(){
     function renderNotes(){
         $("#outputNotes").html(theTemplate(notesData.sort(compareNotes)));
     }
-    $( "#title" ).click(function() {
+    $( "#title" ).on("click", function() {
         renderNotes();
     });
 });
