@@ -1,6 +1,6 @@
 /* Gruppe 13 */
 
-/* nav */
+
 
 * {box-sizing: border-box;}
 body {
@@ -16,6 +16,9 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+/* nav */
+header {margin: 60px 0 0 0;}
 .nav {
     position: fixed;
     right: 0;
@@ -77,17 +80,15 @@ body {
     width:110px; margin:-10px 0 0 10%;
 }
 
-/* notes */
+/* notes + sort */
 
-#outputNotes div {
+.rowContainer {
     display: -webkit-flex;
     display: flex;
-}
-
-#outputNotes  div div{
     min-width: 60px;
     line-height: 30px;
 }
+
 
 .box{
     border: 1px solid #337ab7;
@@ -111,6 +112,10 @@ body {
     -webkit-flex:1;
     flex:1;
 }
+#inputNote {
+    display:none;
+}
+
 
 /* links */
 a {text-decoration: none;}
