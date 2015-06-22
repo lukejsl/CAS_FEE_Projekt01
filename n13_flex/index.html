@@ -19,9 +19,15 @@
 <header>
     <div class="nav">
         <div class="container">
-            <a class="n13logo" href="index.html">n13</a>
+            <div class="nRight">
+                <select id="stylePicker" class="selectStyle">
+                    <option value=".css">Style | classic</option>
+                    <option value=".css">Style | modern</option>
+                </select>
+                <a class="n13logo nRight" href="index.html">n13</a>
+            </div>
             <ul>
-                <li class="active"><a href="index.html">my notes</a></li>
+                <li><a href="index.html">my notes</a></li>
                 <li><a id="btnAddNote" href="#">add note</a></li>
             </ul>
         </div>
@@ -68,22 +74,21 @@
 <!-- Buttons -->
 <div id="sortNotes" class="container rowContainer">
     <div>
-        <button class="btn">Finished</button>
+        <button class="btn">&#x21D5 Finished</button>
     </div>
     <div>
-        <button onclick="renderNotes()" id="title" class="btn">Title</button>
+        <button onclick="renderNotes()" id="title" class="btn">&#x21D5 Title</button>
     </div>
     <div class="boxFlex">
-        <button class="btn"></button>
     </div>
     <div>
-        <button class="btn">Created</button>
+        <button class="btn">&#x21D5 Created</button>
     </div>
     <div>
-        <button class="btn">End Date</button>
+        <button class="btn">&#x21D5 End Date</button>
     </div>
     <div>
-        <button class="btn">Grade</button>
+        <button class="btn">&#x21D5 Grade</button>
     </div>
 </div>
 

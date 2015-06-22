@@ -1,14 +1,14 @@
 /* Gruppe 13 */
 
 
-
+/* global */
 * {box-sizing: border-box;}
+
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.5;
 }
-
 .container {
     max-width: 1200px;
     margin-left: auto;
@@ -16,6 +16,8 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
+.nRight {float: right;}
+.nLeft {}
 
 /* nav */
 header {margin: 60px 0 0 0;}
@@ -33,13 +35,21 @@ header {margin: 60px 0 0 0;}
 }
 
 .nav .n13logo {
-    float:right;
     font-size: 18px;
     height: 50px;
     line-height: 20px;
     padding: 15px;
     color: #afafaf;
 }
+
+.nav .selectStyle {
+    margin-top: 14px;
+    padding: 3px 6px;
+    border: 0px;
+    background-color: #080808;
+    color:#ffffff;
+}
+
 .nav ul {
     float: left;
     margin: 0;
