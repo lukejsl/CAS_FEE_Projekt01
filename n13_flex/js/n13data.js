@@ -31,9 +31,10 @@ $(function(){
 });
 
 // Animation on load
-$( document ).ready(function() {
+;
+(function() {
     $( "#n13postit" ).fadeIn( 3000, function() {
     });
     $( "#n13postit_2" ).fadeIn( 6000, function() {
     });
-});
+})();

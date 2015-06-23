@@ -1,46 +1,46 @@
 /*
-Allgemeine Informationen zum Projekt
-    Um die Grundlagen bewerten zu können, sind grössere „Frameworks" wie Bootstrap nicht erlaubt.
-    Ältere Browser müssen nicht unterstützt werden. Flex-Layout darf verwendet werden.
-    Das erste Projekt sollte keine Single Page Application sein. Wird aber nicht explizit „verboten"
+ Allgemeine Informationen zum Projekt
+ Um die Grundlagen bewerten zu können, sind grössere „Frameworks" wie Bootstrap nicht erlaubt.
+ Ältere Browser müssen nicht unterstützt werden. Flex-Layout darf verwendet werden.
+ Das erste Projekt sollte keine Single Page Application sein. Wird aber nicht explizit „verboten"
 
-Informationen zur Projektabgabe
-    Abgabe des Projektes bis 28 Juni.
-        Mit Begründung bis 05 Juli möglich.
-    Erstellen eines „Branch" mit dem Namen „Abgabe".
-    E-Mail erstellen mit folgendem Inhalt:
-        Header: [CAS FEE] Abgabe {{Gruppennummer}}
-        Link zum Branch
-        Ein ReadMe auf GitHub, falls dieses notwendig ist.
+ Informationen zur Projektabgabe
+ Abgabe des Projektes bis 28 Juni.
+ Mit Begründung bis 05 Juli möglich.
+ Erstellen eines „Branch" mit dem Namen „Abgabe".
+ E-Mail erstellen mit folgendem Inhalt:
+ Header: [CAS FEE] Abgabe {{Gruppennummer}}
+ Link zum Branch
+ Ein ReadMe auf GitHub, falls dieses notwendig ist.
 
  Folgende Kriterien bilden die Basis für die Endabgabe (leichte Änderungen noch möglich):
 
  Funktionsumfang
-     Editieren und erfassen von Notizen
-     Sortieren von Notizen
-     Filtern von „abgeschlossenen" Notizen
-     Abspeichern der Daten auf dem Server
-     Wechseln des Styles
-     Besonders nützliche Zusatz-„Features"
+ Editieren und erfassen von Notizen
+ Sortieren von Notizen
+ Filtern von „abgeschlossenen" Notizen
+ Abspeichern der Daten auf dem Server
+ Wechseln des Styles
+ Besonders nützliche Zusatz-„Features"
 
  JavaScript Qualität
-     Kein Copy & Paste Code
-     „this" richtig verwendet
-     Keine globalen Variablen
-     jQuery Best Practices verwendet.
-     Kein JavaScript im HTML
-     Besonders schöne Konstrukte
-     Besonders schlechte Konstrukte
+ Kein Copy & Paste Code
+ „this" richtig verwendet
+ Keine globalen Variablen
+ jQuery Best Practices verwendet.
+ Kein JavaScript im HTML
+ Besonders schöne Konstrukte
+ Besonders schlechte Konstrukte
 
  HTML / CSS Qualität
-     Keine (wenige) Inline Styles verwendet
-     Übersichtliche CSS-Files
-     Komplexität des HTML Layouts.
-     Verwenden einer Template Engine zum Erstellen der *dynamischen" Daten
+ Keine (wenige) Inline Styles verwendet
+ Übersichtliche CSS-Files
+ Komplexität des HTML Layouts.
+ Verwenden einer Template Engine zum Erstellen der *dynamischen" Daten
 
  Sonstiges
-     Projektstruktur
-     JavaScript Errors
+ Projektstruktur
+ JavaScript Errors
  */
 
 var noteStorage = (function () {
@@ -133,7 +133,7 @@ var noteStorage = (function () {
 
 
 ;
-(function ($, window, document, undefined ) {
+(function ($, window, document, undefined) {
 
     "use strict";
 
@@ -142,6 +142,11 @@ var noteStorage = (function () {
     var dateFinished = '-dateFinished';
 
     $(function () {
+        $("#btnAddNote").on("click",
+            function() {
+                $("#inputNote").toggle();
+            }
+        );
 
         $("#saveNote").on("click",
             function () {
@@ -195,31 +200,32 @@ var noteStorage = (function () {
             }
         );
 
-        $( "#datepicker" ).datepicker({dateFormat: 'dd-mm-yy'});
+        $("#datepicker").datepicker({dateFormat: 'dd-mm-yy'});
 
         /*Handlebars.registerHelper("makeDate", function(timestamp) {
-            return (new Date(timestamp)).format("dd-MM-yyyy");
-        });*/
+         return (new Date(timestamp)).format("dd-MM-yyyy");
+         });*/
 
         function showNotes() {
 
-            var source = $("#note-template").html();
+            var source = $("#n13-handlebar-template").html();
             var template = Handlebars.compile(source);
             var data = noteStorage.notes();
             var notes = [];
 
-            data.forEach(function(entry){
+            data.forEach(function (entry) {
                 notes.push(entry);
             });
 
             $('#note-list').remove();
-            $('body').append(template(notes), {id: "#newNote"});
+            $('#outputNotes').append(template(notes), {id: "#newNote"});
         }
+
         showNotes();
 
-        $( "#n13postit" ).fadeIn( 3000, function() {
+        $("#n13postit").fadeIn(3000, function () {
         });
-        $( "#n13postit_2" ).fadeIn( 6000, function() {
+        $("#n13postit_2").fadeIn(6000, function () {
         });
     });
 
