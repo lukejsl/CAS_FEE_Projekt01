@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <form id="addNote" class="boxFlex" action="/notes" method="post" style="display:none">
+    <form id="addNote" class="boxFlex" action="/notes" method="post">
         <table>
             <tr>
                 <td>Title</td>
@@ -73,18 +73,18 @@
 <script id="n13-handlebar-template" type="x-handlebars-template">
     <div id="note-list">
         {{#each this}}
-            <article>
-                <div class="list rowContainer">
-                    <div class="finished"><input type="checkbox" name="finished" value="na" id="check1" {{finished}}/></div>
-                    <div class="box boxFlex">
-                        <div class="title">{{title}}</div>
-                        <div class="content">{{content}}</div>
-                    </div>
-                    <div class="dateCreated">{{dateCreated}}</div>
-                    <div class="dateFinished">{{dateFinished}}</div>
-                    <div class="grade">{{grade}}</div>
+        <article>
+            <div class="list rowContainer">
+                <div class="finished"><input type="checkbox" name="finished" value="na" id="check1" {{finished}}/></div>
+                <div class="box boxFlex">
+                    <div class="title">{{title}}</div>
+                    <div class="content">{{content}}</div>
                 </div>
-            </article>
+                <div class="dateCreated">{{dateCreated}}</div>
+                <div class="dateFinished">{{dateFinished}}</div>
+                <div class="grade">{{grade}}</div>
+            </div>
+        </article>
         {{/each}}
     </div>
 </script>
