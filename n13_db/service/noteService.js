@@ -10,6 +10,7 @@ var dirFinished = new SortDir;
 var dirCreated = new SortDir;
 var dirEndDate = new SortDir;
 
+//
 function Note(entry) {
     this.id = entry.id || 0;
     this.title = entry.title;
@@ -34,13 +35,16 @@ function addNote(entry, callback) {
 }
 
 function removeNote(id, callback) {
-    db.update({_id: id}, {$set: {"state": "DELETED"}}, {}, function (err, doc) {
-        publicGet(id, callback);
+    /*db.update({id: id}, {$set: {"state": "DELETED"}}, {}, function (err, doc) {
+        callback(id, callback);
+    });*/
+    db.remove({ id: id }, {}, function (err, numRemoved) {
+        callback(id, callback);
     });
 }
 
 function getNote(id, callback) {
-    db.findOne({_id: id}, function (err, doc) {
+    db.findOne({id: id}, function (err, doc) {
         callback(err, doc);
     });
 }
@@ -64,18 +68,20 @@ function SortDir () {
 
 function sort(idx, callback) {
     var element = {};
-    switch (idx.sort) {
+    switch (idx.by) {
         case 'End Date':
-            element = {dateFinished: dirEndDate.dir()}; break;
+            element = {dateFinished: idx.dir}; break;
         case 'Created':
-            element = {dateCreated: dirCreated.dir()}; break;
+            element = {dateCreated: idx.dir}; break;
         case 'Finished':
-            element = {finished: dirFinished.dir()}; break;
+            element = {finished: idx.dir}; break;
         case 'Grade':
-            element = {grade: dirGrade.dir()}; break;
+            element = {grade: idx.dir}; break;
+        case 'ID':
+            element = {id: idx.dir}; break;
         case 'Title':
         default:
-            element = {title: dirTitle.dir()};
+            element = {title: idx.dir};
     }
     db.find({}).sort(element).exec(function (err, docs){
         if (callback) {

@@ -19,6 +19,14 @@ module.exports.get = function(req, res)
     });
 };
 
+
+module.exports.remove = function(req, res)
+{
+    note.remove(req.params.id, function(err, notes) {
+        res.send(JSON.stringify(notes));
+    });
+};
+
 module.exports.add = function(req, res)
 {
     note.add(req.body, function(err, notes) {

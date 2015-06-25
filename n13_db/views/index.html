@@ -34,20 +34,20 @@
         </div>
     </div>
 
-    <form id="addNote" class="boxFlex" action="/notes" method="post">
+    <div id="addNote" class="boxFlex">
         <table>
             <tr>
                 <td>Title</td>
-                <td><input name="title" type="text" size="45"></td>
+                <td><input id="title" name="title" type="text" size="45"></td>
             </tr>
             <tr>
                 <td>Beschreibung</td>
-                <td><input name="content" type="text" cols="46" rows="5"></td>
+                <td><input id="content" name="content" type="text" cols="46" rows="5"></td>
             </tr>
             <tr>
                 <td>Wichtigkeit</td>
                 <td>
-                    <select name="grade">
+                    <select id="grade" name="grade">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -64,9 +64,9 @@
         <input type="button" value="Clear" id="clearNotes"/>
         <input type="button" value="Sort by title" id="sortNotesTitle"/>
         <input type="button" value="Sort by finish date" id="sortNotesFinish"/>
-        <button>Cancel</button>
+        <input type="button" value="Show note 7" id="showNote"/>
 
-    </form>
+    </div>
 
 </article>
 
