@@ -142,11 +142,23 @@ var noteStorage = (function () {
     var dateFinished = '-dateFinished';
 
     $(function () {
+        // AddNote
         $("#btnAddNote").on("click",
             function() {
-                $("#inputNote").toggle();
+                $("#inputNote").slideToggle();
             }
         );
+        // changeStyle
+        $('#stylePicker').change(function() {
+            if ($(this).find(':selected').val() === '2') {
+                $(".nav").addClass("navModern");
+                $("button").addClass("navModern");
+            } else {
+                $(".nav").removeClass("navModern");
+                $("button").removeClass("navModern");
+            }
+        });
+
 
         $("#saveNote").on("click",
             function () {
