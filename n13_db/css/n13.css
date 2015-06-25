@@ -1,0 +1,116 @@
+/* Gruppe 13 */
+
+/* nav */
+
+* {box-sizing: border-box;}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.nav {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 9999;
+    top: 0;
+    border-width: 0 0 1px;
+    background-color: #06232b;
+    border-color: #080808;
+    min-height: 50px;
+    margin-bottom: 20px;
+}
+
+.nav .n13logo {
+    float:right;
+    font-size: 18px;
+    height: 50px;
+    line-height: 20px;
+    padding: 15px;
+    color: #afafaf;
+}
+.nav ul {
+    float: left;
+    margin: 0;
+    list-style: none;
+    color:#ffffff;
+    margin-left: -40px;
+
+}
+.nav li {
+    float: left;
+}
+
+.nav a{
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #9d9d9d;
+    display: block;
+}
+
+.nav .active a, .nav a:hover, .nav a:focus {
+    background-color: #080808;
+    color: #fff;
+}
+
+/* board */
+.board {
+    background-image: url("../media/n13pinnwand_1300x866px.jpg");
+    padding:15px;
+    min-height:80px;
+    margin: 50px 0 0 0;
+}
+.board button
+{
+    margin-top:72px;
+}
+.n13postit {
+    display: none;
+    width:110px; margin:-10px 0 0 10%;
+}
+
+/* notes */
+
+#outputNotes div {
+    display: -webkit-flex;
+    display: flex;
+}
+
+#outputNotes  div div{
+    min-width: 60px;
+    line-height: 30px;
+}
+
+.box{
+    border: 1px solid #337ab7;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display:-webkit-flex;
+    display:flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+.title {
+    border-bottom: 1px solid #337ab7;
+    padding: 10px 15px;
+}
+.content {
+    padding:15px;
+
+}
+.boxFlex {
+    min-width:150px;
+    -webkit-flex:1;
+    flex:1;
+}
+
+/* links */
+a {text-decoration: none;}
