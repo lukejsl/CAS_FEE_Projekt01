@@ -3,24 +3,169 @@
 
 /* global */
 * {box-sizing: border-box;}
-
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.5;
 }
 .container {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 800px;
+    margin: 0 auto 10px auto;
     padding-left: 15px;
     padding-right: 15px;
 }
+.rowContainer {
+    display: -webkit-flex;
+    display: flex;
+    min-width: 60px;
+    line-height: 30px;
+}
+.rowFlexFour {
+    min-width:100px;
+    -webkit-flex:4;
+    flex:4;
+}
+.rowFlexOne {
+    min-width:120px;
+    -webkit-flex:1;
+    flex:1;
+}
+.rowFlexZero {
+    -webkit-flex:1;
+    flex:1;
+}
 .nRight {float: right;}
-.nLeft {}
+.nLeft {float:left;}
+
+/* font-size */
+.btnSort {
+    font-size:14px;
+    font-size: 0.875rem;
+}
+.btnEdit {
+    font-size:14px;
+    font-size: 0.875rem;
+}
+input, textarea {
+    font-size:15px;
+}
+
+/* buttons */
+button {
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 0;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.btnSort {
+    background-color: #5bc0de;
+    border-color: #46b8da;
+    color: #fff;
+    margin: 0 1px;
+}
+.btnEdit {
+    background-color: #d40317;
+    border-color: #d40317;
+    color: #fff;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    z-index:11;
+}
+.btnSave {
+    background-color: #11de56;
+    border-color: #09da26;
+    color:#fff;
+}
+
+/* notes + sort */
+.box{
+    border: 2px solid #337ab7;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.hoverOverlay {
+    display:none;
+    position:absolute;
+    background-color: black;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:10;
+}
+.box:hover .hoverOverlay {
+    display:inline-block;
+}
+.box:hover {
+    border: 2px solid #000000;
+}
+.noteInfo{
+    background-color:#337ab7;
+    padding: 2px 6px;
+    line-height:24px;
+}
+.noteContent{
+    padding: 2px 6px;
+    position:relative;
+    width: 100%;
+}
+.noteInfo img {
+    width: 16px;
+    margin: 0 3px 0 0;
+}
+.title {
+    border-bottom: 1px solid #337ab7;
+}
+.content {
+    line-height: 22px;
+    padding:2px 0;
+
+}
+
+#inputNote {
+    display:none;
+    background-color: #e4ecc8;
+    padding: 10px 20px;
+}
+.inputField div:first-child {
+    width: 150px;
+}
+.sortNotes {padding-top:10px;}
+
+#inputNote input, #inputNote textarea {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #cecece;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    display: block;
+    line-height: 1.5;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+}
+#inputNote input {
+    height: 38px;
+}
+
+/* links */
+a {text-decoration: none;}
+
 
 /* nav */
-header {margin: 60px 0 0 0;}
+header {margin: 51px 0 0 0;}
 .nav {
     position: fixed;
     right: 0;
@@ -90,42 +235,16 @@ header {margin: 60px 0 0 0;}
     width:110px; margin:-10px 0 0 10%;
 }
 
-/* notes + sort */
 
-.rowContainer {
-    display: -webkit-flex;
-    display: flex;
-    min-width: 60px;
-    line-height: 30px;
+/* StyleSwitcher: addClass */
+.navModern {
+    background-color: #d40317;
+    border-color: #080808;
 }
 
-
-.box{
-    border: 1px solid #337ab7;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    display:-webkit-flex;
-    display:flex;
-    -webkit-flex-direction: column;
-    flex-direction: column;
+/* media querries */
+@media screen and (max-width:479px) {
+    header {
+        margin: 120px 0 0 0;
+    }
 }
-.title {
-    border-bottom: 1px solid #337ab7;
-    padding: 10px 15px;
-}
-.content {
-    padding:15px;
-
-}
-.boxFlex {
-    min-width:150px;
-    -webkit-flex:1;
-    flex:1;
-}
-#inputNote {
-    display:none;
-}
-
-
-/* links */
-a {text-decoration: none;}
