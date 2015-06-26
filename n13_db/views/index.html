@@ -1,93 +1,143 @@
 <!DOCTYPE html>
 <html>
+<!-- Gruppe 13 | n13 -->
 <head lang="en">
     <meta charset="UTF-8">
     <title>n13 | create and maintain easy your notes</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link href="css/n13.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
-    <script src="js/n13data.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery-ui-datepicker.css">
 </head>
 <body>
 
 <header>
     <div class="nav">
         <div class="container">
-            <a class="n13logo" href="/notes">n13</a>
+            <div class="nRight">
+                <select id="stylePicker" class="selectStyle">
+                    <option id="selectStyle1" value="1">Style | classic</option>
+                    <option id="selectStyle2" value="2">Style | modern</option>
+                </select>
+                <a class="n13logo nRight" href="index.html">n13</a>
+            </div>
             <ul>
-                <li class="active"><a href="/notes">my notes</a></li>
-                <li><a href="#how to">how to</a></li>
+                <li><a href="index.html">my notes</a></li>
+                <li><a id="btnAddNote" href="#">add note</a></li>
             </ul>
         </div>
     </div>
 </header>
-<article>
-    <div class="container">
-        <div class="board">
-            <button id="toggleAddNote" type="button" class="btn btn-primary">Create new Note</button>
-            <img src="media/n13postit_340x320px.png" id="n13postit" class="n13postit"/>
-            <img src="media/n13postit_2_340x320px.png" id="n13postit_2" class="n13postit"/>
-            <button type="button" class="btn btn-primary" style="float:right;">Show finished Notes</button>
+<div class="container">
+   <div class="board displayNone">
+         <img src="media/n13postit_340x320px.png" id="n13postit" class="n13postit"/>
+         <img src="media/n13postit_2_340x320px.png" id="n13postit_2" class="n13postit"/>
+     </div>
+</div>
+<!-- Eingabeformular -->
+<div class="container inputNote">
+    <div id="inputNote">
+        <div class="rowContainer inputField">
+            <div>Title</div>
+            <div><input id="title" type="text" size="45"></div>
         </div>
+        <div class="rowContainer inputField">
+            <div>Description</div>
+            <div><textarea id="content" type="text" cols="46" rows="5"></textarea></div>
+        </div>
+        <div class="rowContainer inputField">
+            <div>Importance</div>
+            <div>
+                <select id="grade">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+        <div class="rowContainer inputField">
+            <div>Finish Date</div>
+            <div><input type="text" id="datepicker" size="20"/></div>
+        </div>
+        <div class="rowContainer inputField">
+            <div>Finished</div>
+            <div><input class="nRight" type="checkbox" name="finished" value="na" id="check" checked/></div>
+        </div>
+
+        <button id="saveNote" class="btnSave nRight">save note</button>
+        <br/>
+        <br/>
     </div>
-
-    <div id="addNote" class="boxFlex">
-        <table>
-            <tr>
-                <td>Title</td>
-                <td><input id="title" name="title" type="text" size="45"></td>
-            </tr>
-            <tr>
-                <td>Beschreibung</td>
-                <td><input id="content" name="content" type="text" cols="46" rows="5"></td>
-            </tr>
-            <tr>
-                <td>Wichtigkeit</td>
-                <td>
-                    <select id="grade" name="grade">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    &emsp; Erledigt bis
-                    <input name="dateFinished" type="text" id="datepicker" size="20"></td>
-            </tr>
-        </table>
-        <br>
-
-        <input class="btn" type="submit" value="Save" name="entry" id="saveNote"/>
-        <input type="button" value="Clear" id="clearNotes"/>
-        <input type="button" value="Sort by title" id="sortNotesTitle"/>
-        <input type="button" value="Sort by finish date" id="sortNotesFinish"/>
-        <input type="button" value="Show note 7" id="showNote"/>
-
+</div>
+<!-- Status -->
+<div class="container status">
+    <div id="statInit">Notes successfully initialized! Welcome to n13</div>
+    <div id="statNoNotes">There are no Notes. Please add a new Note!</div>
+    <div id="statSaved">Note successfully saved!</div>
+    <div id="statEdited">Note successfully edited and saved!</div>
+    <div id="statDeleted">Note successfully deleted!</div>
+</div>
+<!-- Buttons -->
+<div id="sortNotes" class="container rowContainer sortNotes">
+    <div>
+        <button id="btnSortNotesCreated" class="btnSort">&#x21D5 Created</button>
     </div>
+    <div>
+        <button id="btnSortNotesEndDate" class="btnSort">&#x21D5 End Date</button>
+    </div>
+    <div>
+        <button id="btnSortNotesGrade" class="btnSort">&#x21D5 Grade</button>
+    </div>
+    <div>
+        <button id="btnSortNotesTitle" class="btnSort">&#x21D5 Title</button>
+    </div>
+    <div class="rowFlexZero">
+    </div>
+    <div>
+        <button id="btnSortNotesFinish" class="btnShowFinished">&#x21D5 Finished</button>
+    </div>
+    <div>
+        <button id="button0" class="btnDeleteAll">delete all</button>
+    </div>
+</div>
 
-</article>
+
+<div id="outputNotes" class="container">
+</div>
+
 
 <script id="n13-handlebar-template" type="x-handlebars-template">
     <div id="note-list">
         {{#each this}}
-        <article>
-            <div class="list rowContainer">
-                <div class="finished"><input type="checkbox" name="finished" value="na" id="check1" {{finished}}/></div>
-                <div class="box boxFlex">
-                    <div class="title">{{title}}</div>
-                    <div class="content">{{content}}</div>
+        <article id="noteArticle-{{id}}">
+            <div class="list rowContainer box">
+                <div class="noteInfo rowFlexOne">
+                    <div><img src="media/noteID_512px.png"/> <b>{{id}}</b></div>
+                    <div><img src="media/finishedDate_512px.png"/>{{dateFinished}}</div>
+                    <div><img src="media/createdDate_512px.png "/>{{dateCreated}}</div>
+                    <div><img src="media/importanceGrade_512px.png"/>{{grade}}</div>
                 </div>
-                <div class="dateCreated">{{dateCreated}}</div>
-                <div class="dateFinished">{{dateFinished}}</div>
-                <div class="grade">{{grade}}</div>
+                <div class="noteContent rowFlexFour">
+                    <div class="title"><b>{{title}}</b> <input class="nRight" type="checkbox" name="finished" value="na"
+                                                          id="check1" {{finished}}/></div>
+                    <div class="content">{{content}}</div>
+                    <div class="hoverOverlay">
+                        <button id="btnEdit-{{id}}" class="btnEdit">edit note: {{id}}</button>
+                        <button class="btnDelete" id="delete-{{id}}">delete-{{id}}</button>
+                    </div>
+                </div>
             </div>
         </article>
         {{/each}}
     </div>
 </script>
+
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="js/n13data.js"></script>
 
 </body>
 </html>

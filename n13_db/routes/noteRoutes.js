@@ -1,5 +1,5 @@
 /**
- * Created by rene.ulrich on 22.06.2015.
+ Gruppe 13 | n13
  */
 
 var express = require('express');
