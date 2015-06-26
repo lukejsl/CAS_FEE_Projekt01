@@ -1,9 +1,31 @@
 /**
- * Created by Lukejsl on 04.06.2015.
+ Gruppe 13 | n13
  */
 
 
 $( document ).ready(function() {
+    $(function () {
+        // AddNote open/close
+        $("#btnAddNote").on("click", function () {
+                $("#inputNote").slideToggle();
+            }
+        );
+        // changeStyle
+        $('#stylePicker').change(function () {
+            if ($(this).find(':selected').val() === '2') {
+                $(".nav").addClass("navModern");
+                $("button").addClass("navModern");
+                $(".board").removeClass("displayNone");
+            } else {
+                $(".nav").removeClass("navModern");
+                $("button").removeClass("navModern");
+                $(".board").addClass("displayNone");
+            }
+        });
+    });
+
+    // Variabeln Definition SortDir
+    var sortNotesCreated = new SortDir;
     var sortNotesFinished = new SortDir;
     var sortNotesTitle = new SortDir;
 
@@ -50,23 +72,18 @@ $( document ).ready(function() {
         var html = template(data);
 
         $('#note-list').remove();
-        $('body').append(html, {id: "#newNote"});
+        $('#outputNotes').append(html, {id: "#newNote"});
     }
 
     // Rendern der Notes beim Seitenladen
     function renderNotesInit () {
         var sort = {};
         sort.by = "Created";
-        sort.dir = -1;
+        sort.dir = 1;
         ajax("POST", "/sort/", sort, function (data) {
             renderNotes(data)
         });
     }
-
-    // Dialog zum notes eingeben und speichern auf und zu fahren
-    $("#toggleAddNote").on("click", function () {
-        $('#addNote').toggle( 200 );
-    });
 
     // Speichert Note unter einer freien id
     $("#saveNote").on("click", function () {
@@ -89,34 +106,64 @@ $( document ).ready(function() {
                 renderNotes(data);
             });
         });
-        $('#addNote').hide( 200 );
+        $('#inputNote').slideToggle( 300 );
+        $('#statSaved').slideDown(800).delay(2000).slideUp(800);
     });
 
-    // Sortiert den Notes array nach end Datum
-    $("#sortNotesFinish").on("click", function () {
+    // Editieren einer Note: Button wird nicht erkannt
+    $(".btnEdit").on("click", function(){
+        $("#inputNote").slideToggle();
+    });
+
+    // Sortiert die Notelist nach: Created
+    $("#btnSortNotesCreated").on("click", function () {
+        var sort = {};
+        sort.by = "Created";
+        sort.dir = sortNotesCreated.dir();
+        ajax("POST", "/sort/", sort, function (data) {
+            renderNotes(data);
+        });
+    });
+
+    // Sortiert die Notelist nach: EndDate
+    $("#btnSortNotesEndDate").on("click", function () {
         var sort = {};
         sort.by = "End Date";
         sort.dir = sortNotesFinished.dir();
         ajax("POST", "/sort/", sort, function (data) {
-            renderNotes(data)
+            renderNotes(data);
         });
     });
 
-    // Sortiert den Notes array nach Title
-    $("#sortNotesTitle").on("click", function () {
+    //Sortiert die Notelist nach: Title
+    $("#btnSortNotesTitle").on("click", function () {
         var sort = {};
         sort.by = "Title";
         sort.dir = sortNotesTitle.dir();
         ajax("POST", "/sort/", sort, function (data) {
-            renderNotes(data)
+            renderNotes(data);
         });
     });
 
-    // Löschen eines Eintrags
-    $("#clearNotes").on("click", function () {
-        ajax("DELETE", "/notes/:id", null, function (data) {
-            renderNotes(data)
-        });
+    // Test loeschen einzelner Eintrag : Button wird nicht erkannt im Handlebar-Template!!
+    $(".btnDelete").on("click", function() {
+        alert('test');
+        //var clickedId= $(this).attr("id");
+        //alert(clickedId);
+    });
+
+    // Löschen aller Einträge
+    $(".btnDeleteAll").on("click", function () {
+        for (var i = 0; i <= 10; i++)
+        {
+           // var boxID = $(this).attr('id');
+           // alert(boxID);
+            $('#noteArticle-'+i).slideUp( 500 );
+            ajax("DELETE", "/notes/"+i, null, function (data) {
+                renderNotes(data);
+            });
+        }
+        $('#statDeleted').slideDown(200).delay(3000).slideUp(200);
     });
 
     // Anzeigen einer einzigen note
@@ -131,10 +178,6 @@ $( document ).ready(function() {
 
     // Notes array rendern beim site load
     renderNotesInit();
+    $('#statInit').slideDown(200).delay(2000).slideUp(200);
 
-    // Effekte
-    $( "#n13postit" ).fadeIn( 3000, function() {
-    });
-    $( "#n13postit_2" ).fadeIn( 6000, function() {
-    });
 });
