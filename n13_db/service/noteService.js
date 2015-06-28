@@ -5,7 +5,6 @@
 var Datastore = require('nedb');
 var db = new Datastore({filename: './data/notes.db', autoload: true});
 
-//
 function Note(entry) {
     this.id = entry.id || 0;
     this.title = entry.title;
@@ -45,17 +44,6 @@ function getAllNotes(callback) {
     db.find({}, function (err, docs) {
         callback(err, docs);
     });
-}
-
-function SortDir () {
-    var dir = -1;
-    function direction(){
-        dir = dir*-1;
-        return dir;
-    }
-    return {
-        dir: direction
-    }
 }
 
 function sort(idx, callback) {
