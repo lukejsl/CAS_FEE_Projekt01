@@ -8,10 +8,10 @@
   "dependencies": {
     "body-parser": "^1.12.4",
     "express": "^4.12.4",
-    "method-override": "^2.3.3",
     "nedb": "^1.1.2",
-    "express-hbs": "^0.8.4",
-    "ejs": "",
-    "jquery": "^2.1.4"
+    "jquery": "^2.1.4",
+    "jquery-ui": "^1.10.5",
+    "handlebars": "^3.0.3",
+    "method-override": "^2.3.3"
   }
 }

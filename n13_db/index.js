@@ -6,15 +6,7 @@ var http = require('http');
 var express = require('express');
 var path = require( 'path' );
 var bodyParser = require('body-parser');
-//var hbs = require('express-hbs');
-
-
 var app = express();
-
-/*app.engine('hbs', hbs.express4());
-app.set('view engine', 'hbs');
-app.set('views', __dirname + '/views');*/
-
 var router = express.Router();
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -32,7 +24,12 @@ app.use(express.static(__dirname + '/'));
 app.use(express.static(__dirname + '/sort'));
 app.use(express.static(__dirname + '/finished'));
 app.use( express.static( path.join( __dirname, '/views/' ) ) );
+app.use( express.static( path.join( __dirname, '/js/' ) ) );
+app.use( express.static( path.join( __dirname, '/css/' ) ) );
+app.use( express.static( path.join( __dirname, '/images/' ) ) );
+app.use( express.static( path.join( __dirname, '/node_modules/jquery/dist' ) ) );
+app.use( express.static( path.join( __dirname, '/node_modules/handlebars/dist' ) ) );
+app.use( express.static( path.join( __dirname, '/node_modules/jquery-ui/themes/base' ) ) );
+
 
 http.createServer(app).listen(3000);
-
-

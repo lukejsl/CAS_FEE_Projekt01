@@ -4,17 +4,12 @@
 
 var Datastore = require('nedb');
 var db = new Datastore({filename: './data/notes.db', autoload: true});
-var dirTitle = new SortDir;
-var dirGrade = new SortDir;
-var dirFinished = new SortDir;
-var dirCreated = new SortDir;
-var dirEndDate = new SortDir;
 
 //
 function Note(entry) {
     this.id = entry.id || 0;
     this.title = entry.title;
-    this.finished = "";
+    this.finished = entry.finished;
     this.dateCreated = new Date().toISOString().slice(0, 10);
     this.dateFinished = entry.dateFinished;
     this.grade = entry.grade || 1;
@@ -35,11 +30,8 @@ function addNote(entry, callback) {
 }
 
 function removeNote(id, callback) {
-    /*db.update({id: id}, {$set: {"state": "DELETED"}}, {}, function (err, doc) {
-        callback(id, callback);
-    });*/
-    db.remove({ id: id }, {}, function (err, numRemoved) {
-        callback(id, callback);
+    db.remove({ id: id }, {}, function (err, doc) {
+        callback(err, doc);
     });
 }
 

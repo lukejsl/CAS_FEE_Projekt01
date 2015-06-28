@@ -173,6 +173,15 @@ button:active, button:focus, button:hover {
     height: 38px;
 }
 
+.checkBox input {
+    display: none;
+}
+.checkBox span {
+    width: 12px;
+    height: 12px;
+    display: block;
+}
+
 /* links */
 a {text-decoration: none;}
 

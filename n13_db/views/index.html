@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>n13 | create and maintain easy your notes</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <link href="css/n13.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/jquery-ui-datepicker.css">
+    <link href="n13.css" rel="stylesheet">
+    <link href="jquery-ui-datepicker.css" rel="stylesheet" >
 </head>
 <body>
 
@@ -18,57 +18,24 @@
                     <option id="selectStyle1" value="1">Style | classic</option>
                     <option id="selectStyle2" value="2">Style | modern</option>
                 </select>
-                <a class="n13logo nRight" href="index.html">n13</a>
+                <a class="n13logo nRight" href="/">n13</a>
             </div>
             <ul>
-                <li><a href="index.html">my notes</a></li>
+                <li><a href="/">my notes</a></li>
                 <li><a id="btnAddNote" href="#">add note</a></li>
             </ul>
         </div>
     </div>
 </header>
 <div class="container">
-   <div class="board displayNone">
-         <img src="media/n13postit_340x320px.png" id="n13postit" class="n13postit"/>
-         <img src="media/n13postit_2_340x320px.png" id="n13postit_2" class="n13postit"/>
-     </div>
+    <div class="board displayNone">
+        <img src="media/n13postit_340x320px.png" id="n13postit" class="n13postit"/>
+        <img src="media/n13postit_2_340x320px.png" id="n13postit_2" class="n13postit"/>
+    </div>
 </div>
 <!-- Eingabeformular -->
 <div class="container inputNote">
-    <div id="inputNote">
-        <div class="rowContainer inputField">
-            <div>Title</div>
-            <div><input id="title" type="text" size="45"></div>
-        </div>
-        <div class="rowContainer inputField">
-            <div>Description</div>
-            <div><textarea id="content" type="text" cols="46" rows="5"></textarea></div>
-        </div>
-        <div class="rowContainer inputField">
-            <div>Importance</div>
-            <div>
-                <select id="grade">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-        </div>
-        <div class="rowContainer inputField">
-            <div>Finish Date</div>
-            <div><input type="text" id="datepicker" size="20"/></div>
-        </div>
-        <div class="rowContainer inputField">
-            <div>Finished</div>
-            <div><input class="nRight" type="checkbox" name="finished" value="na" id="check" checked/></div>
-        </div>
-
-        <button id="saveNote" class="btnSave nRight">save note</button>
-        <br/>
-        <br/>
-    </div>
+    <div id="inputNote"></div>
 </div>
 <!-- Status -->
 <div class="container status">
@@ -119,8 +86,8 @@
                     <div><img src="media/importanceGrade_512px.png"/>{{grade}}</div>
                 </div>
                 <div class="noteContent rowFlexFour">
-                    <div class="title"><b>{{title}}</b> <input class="nRight" type="checkbox" name="finished" value="na"
-                                                          id="check1" {{finished}}/></div>
+                    <div class="title"><b>{{title}}</b> <input class="nRight" type="checkbox" name="finished"
+                                                               id="check1" {{finished}}/></div>
                     <div class="content">{{content}}</div>
                     <div class="hoverOverlay">
                         <button id="btnEdit-{{id}}" class="btnEdit">edit note: {{id}}</button>
@@ -133,11 +100,54 @@
     </div>
 </script>
 
+<script id="n13-handlebar-template-input" type="x-handlebars-template">
+    <div id="input-field">
+        {{#each this}}
+        <div class="rowContainer inputField">
+            <div>Title</div>
+            <div><input id="title-{{id}}" type="text" size="45" value="{{title}}"></div>
+        </div>
+        <div class="rowContainer inputField">
+            <div>Description</div>
+            <div><textarea id="content" type="text" cols="46" rows="5">{{content}}</textarea></div>
+        </div>
+        <div class="rowContainer inputField">
+            <div>Importance</div>
+            <div>
+                <select id="grade" value="{{grade}}">
+                    <option {{grade1}} value="1">1</option>
+                    <option {{grade2}} value="2">2</option>
+                    <option {{grade3}} value="3">3</option>
+                    <option {{grade4}} value="4">4</option>
+                    <option {{grade5}} value="5">5</option>
+                </select>
+            </div>
+        </div>
+        <div class="rowContainer inputField">
+            <div>Finish Date</div>
+            <div><input type="text" id="datepicker" size="20" value="{{dateFinished}}"/></div>
+        </div>
+        <div class="rowContainer inputField">
+            <div>Finished</div>
+            <div><label class="checkBox">
+                <input class="nRight" type="checkbox" name="finished" id="check" {{finished}}/>
+                <span></span>
+            </label></div>
+        </div>
 
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+        <button id="cancel" class="btnDeleteAll nRight">cancel</button>
+        <button id="{{saveNoteId}}" value="{{id}}" class="btnSave nRight">save note</button>
+        <br/>
+        <br/>
+        {{/each}}
+    </div>
+</script>
+
+
+<script src="jquery.min.js"></script>
+<script src="handlebars.min.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script src="js/n13data.js"></script>
+<script src="n13data.js"></script>
 
 </body>
 </html>
