@@ -45,6 +45,10 @@ button {
 input, textarea {
     font-size:15px;
 }
+/* brauchte eigene font-family definition, warum auch immer */
+textarea {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
 
 /* buttons */
 button {
